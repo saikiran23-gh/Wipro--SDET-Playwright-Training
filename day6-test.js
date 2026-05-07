@@ -1,0 +1,252 @@
+
+
+// // 1) The Flight Booking Data Cleaner---------------------
+
+// const rawFlights = [                    // Created a new array called rawFlights
+//   "London-Paris:150",
+//   "New York-Tokyo:invalid",
+//   "Dubai-Mumbai:450",
+//   "Berlin-Rome:95"
+// ];
+
+// const cleanedFlights = rawFlights            // created new variable cleanedFlights
+//   .map(function (flight) {                   // converts string to obj and loops through every item
+//     const parts = flight.split(":");        //breaks the string into 2 parts using ":"
+//     const route = parts[0];                // represents ex:- london to paris
+//     const rawPrice = parts[1];              // this wii be the cost 
+
+//     const cities = route.split("-");
+//     const from = cities[0];                  // from london
+//     const to = cities[1];                    // to paris
+
+//     let price = Number(rawPrice);           //explicit conversion  to number
+
+//     // Validation: if the price is invalid or missing, set to 0
+//     if (isNaN(price)) {
+//       price = 0;
+//     }
+
+//     return {                              // this is object
+//       from: from,
+//       to: to,
+//       price: price
+//     };
+//   })
+
+//   // Filtering flights between $100 and $500 inclusive
+//   .filter(function (flight) {
+//     return flight.price >= 100 && flight.price <= 500;
+//   })
+
+//   // Sort by ascending price
+//   .sort(function (a, b) {
+//     return a.price - b.price;
+//   });
+
+// // Convert final result into JSON string
+// const result = JSON.stringify(cleanedFlights, null, 2);
+
+// console.log(result);                         // printing result
+
+
+
+
+// // 2)The E-Commerce Discount Applicator--------------------------------
+
+// const cart = [
+//   { name: "Smartphone", price: 800, category: "Electronics" },  // created a array of objects
+//   { name: "Toaster", price: 50, category: "Home" },
+//   { name: "Headphones", price: 250, category: "Electronics" },
+//   { name: "Monitor", price: 150, category: "Electronics" }
+// ];
+
+// // Callback function
+// function isEligible(product) {              // wrighting a function which checks the product discount
+//   if (
+//     product &&
+//     product.category === "Electronics" &&
+//     typeof product.price === "number" &&
+//     product.price > 200
+//   ) {
+//     return true;
+//   }
+
+//   return false;
+// }
+
+// // Main function
+// function applyPromo(cart, promoCallback) {     // in this function cart is an array of product and promocallback is checking discount for object
+
+//   // Check if cart is valid
+//   if (!Array.isArray(cart)) {
+//     console.log("Invalid cart data");
+//     return;
+//   }
+
+//   let discountedCount = 0;                 //stores number of discounted products
+//   let totalSavings = 0;                    //tores total discount money saved
+
+  
+//   const updatedCart = cart.map(function (product) {       //map() function  loops through every product.
+
+//     // Check if product is valid
+//     if (!product || typeof product !== "object") {         //Checks whether product is valid.
+//       return {
+//         isDiscounted: false
+//       };
+//     }
+
+//     // Check eligibility using callback
+//     if (promoCallback(product)) {
+
+//       const discount = product.price * 0.10;          //Calculates 10% discount.
+
+//       discountedCount = discountedCount + 1;
+
+//       totalSavings = totalSavings + discount;
+
+//       return {
+//         name: product.name,
+//         price: product.price - discount,
+//         category: product.category,
+//         isDiscounted: true
+//       };
+//     }
+
+//     // Non-discounted items
+//     return {
+//       name: product.name,
+//       price: product.price,
+//       category: product.category,
+//       isDiscounted: false
+//     };
+//   });
+
+//   // Prints summary
+//   console.log(
+//     "Promotion applied! " +
+//     discountedCount +
+//     " items were discounted for a total saving of $" +
+//     totalSavings.toFixed(2)
+//   );
+
+//   // Delay output by 1000ms
+//   setTimeout(function () {               //settimeout is a function for delay
+//     console.log(updatedCart);
+//   }, 1000);
+// }
+
+// // Function calling
+// applyPromo(cart, isEligible);
+
+
+
+
+// //3) The Movie Stream Analytics------------------------------------------
+
+// const rawMovies = [                        //created array of strings
+//   "Inception|Sci-Fi|12000",
+//   "The Lion King|Animation|8000",
+//   "Mad Max|Action|invalid",
+//   "The Matrix|Sci-Fi|15000",
+//   "Gladiator|Action|4500"
+// ];
+
+// const processedMovies = rawMovies                 // array of strings assigned to a variable
+//   .map(movie => {                                    // writing map fun to convert sting to object
+//     const [name, genre, rawViews] = movie.split("|");
+
+//     let views = Number(rawViews);
+
+//     // Validate views
+//     if (isNaN(views)) {                  //   checking if conersion is failed
+//       views = 0;
+//     }
+
+//     return {                            //new object creation
+//       name,
+//       genre,
+//       views
+//     };
+//   })
+//   // Filter Action or Sci-Fi movies with more than 5000 views
+//   .filter(movie =>
+//     (movie.genre === "Action" || movie.genre === "Sci-Fi") &&
+//     movie.views > 5000
+//   )
+//   // Sort by views descending
+//   .sort((a, b) => b.views - a.views);
+
+// // Convert final result to JSON string
+// const result = JSON.stringify(processedMovies, null, 2);
+
+// console.log(result);
+
+
+
+
+
+//4) The Automated Payroll Processor----------------------------------
+
+
+// const employees = [                              // creation of array of employee object
+//   { id: 101, name: "Alice", salary: 6000 },
+//   { id: 102, name: "Bob", salary: 3500 },
+//   { id: 103, name: "Charlie", salary: 5200 }
+// ];
+
+// 
+// const taxLogic = (salary) => {                // Callback function for tax calculation
+//   return salary > 5000 ? 0.20 : 0.10;         // ternary operator used to check the tax calcuation . if salary is >5000 then tax is 20% else 10%
+// };
+
+
+// function calculatePayroll(employees, taxCallback) {     // Main payroll function created for employee array and tax collection
+//   
+//   if (!Array.isArray(employees)) {                   // Validate input and is employee actually an array then print error and stops function 
+//     console.log("Invalid employee data");
+//     return;
+//   }
+
+//   let totalNetPayout = 0;            // totalNetPayout ia a variable Stores total salary after tax deductions.
+
+
+
+//   const processedEmployees = employees.map((employee) => {         // .map() loops through every employee and Creates a new updated employee array.
+//     
+//     if (!employee || typeof employee.salary !== "number") {          // validates employee object
+//       return {                                               //if invalid  returns default values
+//         ...employee,
+//         netSalary: 0,
+//         status: "Standard"
+//       };
+//     }
+
+//     const taxRate = taxCallback(employee.salary);
+//     const taxAmount = employee.salary * taxRate;               //calculates tax amount
+//     const netSalary = employee.salary - taxAmount;             // calculates net salary
+
+//     totalNetPayout += netSalary;                              //Adds employee's net salary to total payout.
+
+//     return {                                             //Returns all updated employee object
+//       ...employee,
+//       tax: Number(taxAmount.toFixed(2)),
+//       netSalary: Number(netSalary.toFixed(2)),
+//       status: netSalary > 4000 ? "Premium" : "Standard"
+//     };
+//   });
+
+//   // Log final summary                 // Payroll Processed: Total Net Payout is $12480.00 for 3 employees.
+//   console.log(
+//     `Payroll Processed: Total Net Payout is $${totalNetPayout.toFixed(2)} for ${processedEmployees.length} employees.`
+//   );
+
+//   // Delayed return
+//   setTimeout(() => {                   //setTimeout runs code after delay.
+//     console.log(processedEmployees);
+//   }, 2000);
+// }                                          
+
+// calculatePayroll(employees, taxLogic);         // Function call
+
+// Function call
