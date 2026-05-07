@@ -1,0 +1,105 @@
+//Logging Names
+const names = ['Alice', 'Bob', 'Charlie'];
+
+names.forEach(function(name) {
+  console.log("Hello, " + name);
+});
+
+
+//Temperature Conversion
+const celsius = [0, 10, 20, 30];
+
+const fahrenheit = celsius.map(temp => temp * 1.8 + 32);
+
+console.log(fahrenheit);
+
+//Finding Adults
+const users = [
+  { name: 'Li', age: 16 },
+  { name: 'Dan', age: 22 },
+  { name: 'Sarah', age: 17 }
+];
+
+const adults = users.filter(user => user.age >= 18);
+
+console.log(adults);
+
+//String Lengths
+function getLongStrings(arr) {
+  return arr.filter(str => str.length > 5);
+}
+
+// Example usage:
+const words = ["apple", "banana", "grapes", "kiwi", "watermelon"];
+
+const result = getLongStrings(words);
+console.log(result);
+
+//Total Cost
+const prices = [19.99, 5.50, 3.99, 25.00];
+
+const total = prices.reduce((sum, price) => sum + price, 0);
+
+console.log(total);
+
+
+//Counting Occurrences
+const fruits = ['apple', 'banana', 'orange', 'apple', 'grape', 'apple'];
+
+const appleCount = fruits.reduce((count, fruit) => {
+  return fruit === 'apple' ? count + 1 : count;
+}, 0);
+
+console.log(appleCount);
+
+
+//Array Transformation
+const numbers = [1, 2, 3, 4, 5, 6];
+
+const result = numbers
+  .filter(num => num % 2 === 0) 
+
+console.log(result);
+
+
+
+//Object Extraction
+const products = [
+  { id: 1, title: 'Laptop' },
+  { id: 2, title: 'Mouse' }
+];
+
+const titles = products.map(product => product.title);
+
+console.log(titles);
+
+
+//The Average
+const scores = [80, 90, 70, 100];
+
+const average = scores.reduce((sum, score) => sum + score, 0) / scores.length;
+
+console.log(average);
+
+
+//Flattening (The Bonus)
+const nested = [[1, 2], [3, 4], [5, 6]];
+
+const flatArray = nested.reduce((acc, curr) => acc.concat(curr), []);
+
+console.log(flatArray);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

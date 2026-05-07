@@ -1,0 +1,85 @@
+let a = 5;
+let b = 10;
+
+let str = "Hello, World!";
+
+// String operations
+console.log("String:", str);
+console.log("Length of string:", str.length);
+console.log("Uppercase:", str.toUpperCase());
+console.log("Lowercase:", str.toLowerCase());
+console.log("Substring (0-5):", str.substring(0, 5)); // 0 - first character, 5 - up to but not including the 5th character
+
+// Mathematical operations
+console.log("Addition:", a + b);
+console.log("Subtraction:", a - b);
+console.log("Multiplication:", a * b);
+console.log("Division:", a / b);
+console.log("Remainder:", a % b); // Remainder (Modulo)
+
+// Logical operations --> bool
+console.log("a > b:", a > b); // F
+console.log("a < b:", a < b); // T
+console.log("a == b:", a == b); // F === Strict equality (checks value and type)
+console.log("a != b:", a != b); // T
+console.log("a >= b:", a >= b); // F
+console.log("a <= b:", a <= b); // T
+
+
+//QUESTION 3
+// Initials Creator: Given a variable let fullName = "John Doe", write code to extract the first letter of the first name and the first letter of the last name to create the string "JD"
+
+let fullName = "John Doe";
+const space = fullName.indexOf(" ");
+let shortName = fullName[0] + fullName[space+1];
+console.log(shortName); 
+
+
+
+
+// QUESTION 4
+//The Cleaner: Given the string let messy = " Javascript is fun ", write a single line of code that removes the extra spaces at the start/end and changes all the letters to lowercase.
+
+let messy = " Javascript is fun ";
+console.log("Before triming and changing case:", messy);
+console.log("Length of string:", messy.length);
+let spaceremover = messy.trim().toLowerCase();
+
+console.log("After triming and changing case:", spaceremover);
+console.log("Length of string:", spaceremover.length);
+
+//QUESTION 5
+//The Switcher: Write a switch statement that takes a variable let choice = "A" and logs "Choice is A", "Choice is B", or "Invalid choice" based on the value of choice.
+
+let choice = "A";
+switch(choice) {
+    case "A":
+        console.log("Choice is A");
+        break;
+    case "B":
+        console.log("Choice is B");
+        break;
+    default:
+        console.log("Invalid choice");
+}
+
+
+
+
+// QUESTION 6
+//The Looping Logger: Given an array let arr = [1, 2, 3, 4, 5], write code to log each element multiplied by 2 using a for loop, a while loop, and the forEach method.
+
+let arr = [1, 2, 3, 4, 5];
+for (let i = 0; i < arr.length; i++) {
+    console.log("Elements multiplied by 2", ":", arr[i] * 2);
+}
+let lengthOfArr = arr.length;
+let i = 0;
+while ( i <lengthOfArr) {
+    console.log("Elements multiplied by 2", ":", arr[i] * 2);
+    i++;
+}
+
+arr.forEach(function(x) {
+    console.log("Elements multiplied by 2 ",":", x * 2);
+});
