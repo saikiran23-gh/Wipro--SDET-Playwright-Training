@@ -170,15 +170,76 @@
 
 
 //The Union Manipulation Puzzle
-type AllEvents = "click" | "dbclick" | "submit" | "reset" | "keypress";
+// type AllEvents = "click" | "dbclick" | "submit" | "reset" | "keypress";
 
-type MouseEvents = Extract<AllEvents, "click" | "dbclick">;
+// type MouseEvents = Extract<AllEvents, "click" | "dbclick">;
 
-type NonFormEvents = Exclude<AllEvents, "submit" | "reset">;
+// type NonFormEvents = Exclude<AllEvents, "submit" | "reset">;
 
 
-let a: MouseEvents = "click";
-console.log(a);
+// let a: MouseEvents = "click";
+// console.log(a);
 
-let b: NonFormEvents = "keypress";
-console.log(b);
+// let b: NonFormEvents = "keypress";
+// console.log(b);
+
+//Async Higher-Order Function (HOF)
+// function safeExecute<Args extends any[], T>(asyncFnc: (...args: Args) => Promise<T>) {
+//     return async (...args: Args): Promise<T | null> => {
+//         try {
+//             return await asyncFnc(...args);
+//         } catch (err) {
+//             console.error(err);
+//             return null;
+//         }
+//     }
+// }
+
+// const info = async (id: number): Promise<string> => {
+//     if(id === -1) throw new Error("Invalid ID");
+//     return `Data for ID: ${id}`
+// }
+
+
+// async function dryRun() {
+//     const getData = safeExecute(info);
+//     const res = await getData(10);
+//     const res1 = await getData(0);
+//     const res2 = await getData(-1);
+//     console.log(res, res1, res2);
+// }
+
+// dryRun();
+
+// Index Signatures for Dynamic Metadata
+// interface UserMetadata {
+//   createdAt: Date;
+//   [key: string]: string | number | boolean | Date;
+// }
+
+// const user: UserMetadata = {
+//   createdAt: new Date(),
+//   name: "saikiran",
+//   age: 23,
+//   isAdmin: false,
+// };
+
+// console.log(user);
+
+
+// Mapped Types with Key Remapping
+interface Car {
+  make: string;
+  model: string;
+}
+
+type ApiResponse<T> = {
+  [K in keyof T as `DATA_${Uppercase<K & string>}`]: T[K];
+};
+
+const car: ApiResponse<Car> = {
+  DATA_MAKE: "Lambo",
+  DATA_MODEL: "Huracan",
+};
+
+console.log(car);
