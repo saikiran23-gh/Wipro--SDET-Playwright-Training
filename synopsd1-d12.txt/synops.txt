@@ -1,0 +1,371 @@
+
+
+ Data Types
+
+JavaScript supports dynamic typing and includes:
+
+- **String** → Text data
+- **Number** → Mathematical values
+- **Object** → Key-value pair structure
+
+`typeof` is used to check the data type of a variable.
+
+---
+
+#  3. Variables & Scope
+
+- `var`, `let`, `const` → Used to declare variables
+- Scope defines where variables can be accessed
+- Variables inside functions are **local**
+
+---
+
+#  4. Conditional Statements
+
+##  If Statement
+
+Executes code when condition is true:
+
+```javascript
+if (condition) {
+  // code
+}
+```
+
+##  Nested If
+
+An `if` inside another `if`
+
+##  Else Statement
+
+Executes when condition is false:
+
+```javascript
+if (condition) {
+  // true block
+} else {
+  // false block
+}
+```
+
+##  Switch Case
+
+Used for multiple conditions:
+
+```javascript
+switch (x) {
+  case 1:
+    break;
+}
+```
+
+---
+
+#  5. Operators
+
+## Arithmetic Operators
+
+- Addition → `+`
+- Subtraction → `-`
+- Multiplication → `*`
+- Division → `/`
+- Modulus → `%`
+
+## Comparison Operators
+
+- `==` → Equal
+- `===` → Strict equal
+- `!=` → Not equal
+- `>`, `<`, `>=`, `<=`
+
+---
+
+#  6. Loops
+
+##  For Loop
+
+Used for repetition:
+
+```javascript
+for (let i = 0; i < 5; i++) {
+  console.log(i);
+}
+```
+
+---
+
+#  7. Strings & String Methods
+
+- `length` → Returns string length
+- `toUpperCase()` / `toLowerCase()`
+- `substring()`
+- `charAt()`
+
+##  Template Literals
+
+```javascript
+let str = `Hello ${name}`;
+```
+
+---
+
+#  8. Arrays & Array Methods
+
+Arrays store multiple values:
+
+```javascript
+let arr = [1, 2, 3];
+```
+
+## Common Methods
+
+- `push()` → Add at end
+- `pop()` → Remove from end
+- `unshift()` → Add at beginning
+- `shift()` → Remove from beginning
+- `splice()` → Add/remove elements
+- `indexOf()` → Find index
+- `includes()` → Check existence
+
+---
+
+#  9. Advanced Array Methods
+
+- `forEach()` → Iterate elements
+- `map()` → Transform array
+- `filter()` → Conditional selection
+- `find()` → First matching element
+
+---
+
+#  10. Objects
+
+Objects store data in key-value pairs:
+
+```javascript
+let obj = { name: "Aryan" };
+```
+
+---
+
+#  11. Functions
+
+Functions are reusable blocks of code:
+
+```javascript
+function add(a, b) {
+  return a + b;
+}
+```
+##  Arrow Functions
+
+```javascript
+const add = (a, b) => a + b;
+```
+
+---
+
+#  12. Type Conversion
+
+- `parseInt()` → String to integer
+- `parseFloat()` → String to float
+- `Number()` → Convert to number
+
+---
+
+#  13. Math Functions
+
+- `Math.random()` → Random number
+- `Math.floor()` → Round down
+- `Math.ceil()` → Round up
+
+---
+
+#  14. DOM (Document Object Model)
+
+DOM allows interaction with HTML elements:
+
+```javascript
+document.getElementById("name");
+
+
+
+Synchronous program:
+    -> code executes in a sequential order (line by line), next line waits for the current line to finish execution before running
+    -> disadvantage is if one block/line takes more time to finish then all the after blocks/lines will wait so its not efficient
+
+To solve this we have 3 ways:
+    1-> callbacks: its a function that runs after something finishes, callbacks can be any type of functions(generic function,arrow function, etc)
+    this way will be hectic to debug or to understand if we have multiple callbacks and this is called callback hell
+    
+    => setTimeout(callback, time) -> will execute the callback function once after a specific delay
+
+    => setInterval(callback, time) -> will execute the callback function repeatedly every specific interval until it stopped
+
+    => clearInterval(setInterval) -> stops a setInterval from running, we should store the interval in a variable first to clear it
+    
+    2-> Promise: an object in js which introduced to solve callback hell and it represents a value that will be available in future
+        there are 3 states in Promise
+            Pending -> initial state
+            Resolve -> operation successfull then promise holds result value
+            Reject -> operation failure then promise holds error message
+    
+    calling api and modifying its data
+        fetch("https://jsonplaceholder.typicode.com/todos")
+            .then((res) => { return res.json() })
+            .then((data) => { return data.filter((d) => { return (d.id % 100) === 0 }) })
+            .then((data) => { return data.map((d) => { d.title = "Ojas " + d.title; return d }) })
+            .then((data) => { console.log(data) })
+            .catch((e) => { console.log(e) })
+
+
+
+
+/json.stringify() -----> Converts Json() to String
+    
+
+// json.parse() ---------> Coverts String to Json()
+
+
+//async function
+- A function declared with `async` that always returns a Promise. 
+- Inside an `async` function, you can use `await`. The function pauses at `await` but doesn't block the whole program.
+
+//await
+- An operator you can only use inside `async` functions. 
+- Pauses the `async` function until a Promise settles, then returns the result. 
+- Makes async code look sequential. If the Promise rejects, `await` throws an error you can catch with `try/catch`.
+
+
+
+ //CLASS 
+   - A class is a blueprint/template used to create objects.
+   - Contains properties and methods.
+
+   Example:
+   class Student {
+       constructor(name) {
+           this.name = name;
+       }
+   }
+
+   //OBJECT
+   
+   - Objects are instances created from classes.
+   - Store actual values and access methods.
+
+   Example:
+   const s1 = new Student("Arun");
+
+//OOPS 
+    -> object oriented programing which makes code to be organised and more readable
+
+Four principles  of OOPS:
+    -> Encapsulation
+        => securing the internal structure wihtout giving direct access it gives controlled access by using access modifiers
+    -> Inheritence
+        => we can create classes which can extends from another class using extends keyword
+        => so child class can inherite properties/methods from parent class
+    -> Polymorphism
+        => one thing having many forms, like one method from one class can be having different behaviours for each class
+    -> Abstraction
+        => hiding the complex internal implementation and showing what is neccesary
+
+
+
+
+
+
+Generally the objects would get thier own copies of functions. but this leads to more memory usage as same function copy is created several times whenever the object is created. and this lead to ineffitient usage of memory.
+So to use the memory effitiently we use something called as "prototype".
+
+Prototype:
+    -> it is used to generate a single copy of a function and all the objects will use the same copy.
+    -> this makes the memory usage effitient.
+
+callback function
+    -> a function which has been called by a function
+higher order function
+    -> a function which calls a callback function
+
+stack : 
+    ->it stores data in last in first out order (LIFO)
+    -> premitive types will be stored in stack and it fetches fastly 
+    -> primitive copy
+
+heap: 
+    -> it stores objects like funtions, arrays and in random order and its fetches slowly compared to stack
+    -> refrence copy
+ 
+
+
+
+
+# Hoisting
+
+ console.log(greet);  // undefined
+ var greet = "Hello World";
+ console.log(greet) // Hello World
+
+
+ #function Hoisting
+
+ sayHi() // Hello World 
+ function sayHi(){
+    console.log("Hello World!")
+}
+
+
+# OBJECTS AND PROTOTYPES
+
+ const car = {
+     brand : "Tesla",
+     start : function(){
+        console.log("Vroom Vroom")
+    }
+}
+
+const c1= new start();
+
+start.prototype.stop = function(){
+ console.log("stop")
+ }
+
+
+#For-in and For-of
+
+for(let e in arr){ //in -> index,  of-> value
+    console.log(e)
+}
+
+for(let e of arr){ //in -> index, of -> value
+    console.log(e)
+}
+
+
+
+
+
+
+day 12 Playwright Basics
+Playwright is an automation testing framework used for web applications testing 
+
+
+//Core Concepts
+
+locator - finds element
+expect - validation/assertion
+
+//Playwright Methods
+
+page.goto()
+locator()
+getByRole()
+click()
+fill()
+expect()
+
+
+//Playwright Assertion Example
+expect(page.url()).toBe('https://www.techxincorporation.com/');
+npx playwright test {file_name}  // to run a tesing file in js 
