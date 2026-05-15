@@ -1,0 +1,33 @@
+//Synopsis: Login Form Testing Using Playwright----------------------
+
+Developed a login form application using Node.js and Express.js.
+
+Implemented frontend pages using HTML, CSS, and JavaScript.
+
+Created routes for Home page and Login page.
+
+Used Express middleware for JSON parsing and static file serving.
+
+Designed a responsive login form interface using CSS.
+
+Implemented client-side form submission using Fetch API.
+
+Added backend validation for username and password fields.
+
+Verified user credentials on the server side.
+
+Displayed dynamic success and error messages without page reload.
+
+Used asynchronous programming concepts with async/await.
+
+Automated login form testing using Playwright framework.
+
+Created reusable Playwright function for login testing.
+
+Automated form filling and button click actions.
+
+Captured and validated response messages during testing.
+
+Improved application reliability through automated UI testing.
+
+Gained practical knowledge in full-stack development and software testing.
