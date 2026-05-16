@@ -1,3 +1,4 @@
+
 // @ts-check
 import { test, expect } from '@playwright/test';
 
@@ -35,4 +36,4 @@ loginData.forEach(async data => {
     
     await expect(msg).toHaveText(data.expected);
   });
-})
+
