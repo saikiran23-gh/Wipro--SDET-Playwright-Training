@@ -1,19 +1,72 @@
 // @ts-check
 import { test, expect } from '@playwright/test';
 
-test('has title', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+test.describe('testing index.html', async () => {
+  // test.beforeAll(async () => {
+  //   console.log("Before all test cases this block got executed")
+  // });
 
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Playwright/);
+  test.beforeEach(async ({ page }) =>
+    await page.goto('http://localhost:5500/Day13/webapp/public/index.html')
+  );
+
+  test('handle alert', async ({ page }) => {
+    const btn = page.locator('#alertbtn');
+    await btn.click();
+
+    // handle dialog box
+    page.on('dialog', dialog => {
+      expect(dialog.message()).toBe('Hello');
+      dialog.accept(); // ok
+    })
+  });
+
+  test('check home title', async ({ page }) => {
+    const heading = page.getByRole('heading', { name: 'Home' });
+
+    await expect(heading).toBeVisible();
+  });
+
+  // test.afterAll(() => console.log("done!"))
+
+  // test.afterEach(() => console.log("done moew meow"))
 });
 
-test('get started link', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+test.describe('testing login form', () => {
+  test.beforeEach(async ({ page }) =>
+    await page.goto('http://localhost:3000/login.html')
+  );
 
-  // Click the get started link.
-  await page.getByRole('link', { name: 'Get started' }).click();
+  const loginData = [
+    {
+      username: "tom",
+      password: "tom",
+      expected: "Username length must be greater than 3 & Password 5"
+    }, {
+      username: "tom123",
+      password: "tom",
+      expected: "Username length must be greater than 3 & Password 5"
+    }, {
+      username: "admin123",
+      password: "admin123",
+      expected: "Login successful"
+    }, {
+      username: "admin123",
+      password: "admin12345",
+      expected: "Invalid credentials"
+    }
+  ]
+  loginData.forEach(async data => {
+    test(`Checking Login form with ${data.username}, ${data.password}`, async ({ page }) => {
+      const username = page.locator("#username");
+      const password = page.locator("#password");
+      const btn = page.locator("#loginBtn");
+      const msg = page.locator("#msg");
 
-  // Expects page to have a heading with the name of Installation.
-  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
-});
+      await username.fill(data.username);
+      await password.fill(data.password);
+      await btn.click();
+      await expect(msg).toHaveText(data.expected);
+    });
+  })
+})

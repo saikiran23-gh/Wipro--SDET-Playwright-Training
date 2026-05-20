@@ -228,18 +228,18 @@
 
 
 // Mapped Types with Key Remapping
-interface Car {
-  make: string;
-  model: string;
-}
+// interface Car {
+//   make: string;
+//   model: string;
+// }
 
-type ApiResponse<T> = {
-  [K in keyof T as `DATA_${Uppercase<K & string>}`]: T[K];
-};
+// type ApiResponse<T> = {
+//   [K in keyof T as `DATA_${Uppercase<K & string>}`]: T[K];
+// };
 
-const car: ApiResponse<Car> = {
-  DATA_MAKE: "Lambo",
-  DATA_MODEL: "Huracan",
-};
+// const car: ApiResponse<Car> = {
+//   DATA_MAKE: "Lambo",
+//   DATA_MODEL: "Huracan",
+// };
 
-console.log(car);
+// console.log(car);

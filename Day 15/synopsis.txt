@@ -1,0 +1,17 @@
+//synopsi for day15
+
+
+=>Test annotations are implemented in the automation framework.
+=>test.skip() is used to skip execution of incomplete test cases.
+=>test.fail() is used to mark expected failure scenarios.
+=>Expected failure handling improves negative testing validation.
+=>test.fixme() is used for unstable or flaky test cases.
+=>test.slow() is used to increase execution timeout for slow tests.
+=>test.setTimeout() is used for custom timeout configuration.
+=>Timeout handling improves execution stability.
+=>test.step() is used for step-by-step test execution reporting.
+=>Step grouping improves readability and debugging.
+=>page.goto() is used for URL navigation.
+=>Assertions are implemented using expect() method.
+=>Web page validation is performed using page title verification.
+=>Locator strategy is implemented using page.locator().
