@@ -1,0 +1,39 @@
+//Q1
+
+
+function formatGuests(names) {
+    names.shift();
+    return names.map(name => Guest: ${name}).join('\n');
+}
+let guestList = ["Nandini", "Sarthak", "Anushree", "Bhagyashree"];
+
+let result = formatGuests(guestList);
+console.log(result);
+
+
+//Q2
+const getHighNumbers= (arr) => {
+    const threshold = Math.floor(Math.random() * 50)+ 1;
+    console.log("Threshold:", threshold);
+
+return arr
+.filter(item=> typeof item ==="number")
+.filter(num => num > threshold);
+};
+const data = [89, "hello", 45, 50, "20", 5, 90, 19];
+const res = getHighNumbers(data);
+console.log(res);
+
+
+//Q3
+const prices = ["100", "250", "75", "50", "20"];
+prices.splice(-1, 1);
+console.log(Total Price: $${prices.map(Number).reduce((a,b)=>a+b,0)});
+
+//or
+
+const prices = ["100", "250", "75", "50", "20"]; 
+const removedItem = prices.splice(-1, 1);
+const numericPrices = prices.map(price => Number(price));
+const total = numericPrices.reduce((sum, price) => sum + price, 0);
+console.log(Total Price: $${total});
